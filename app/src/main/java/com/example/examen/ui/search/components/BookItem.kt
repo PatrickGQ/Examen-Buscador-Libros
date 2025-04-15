@@ -18,7 +18,7 @@ import com.example.examen.domain.model.Book
 @Composable
 fun BookItem(
     book: Book,
-    onLikeClick: (Book) -> Unit
+    onLikeClick: ((Book) -> Unit)? = null
 ) {
     Card(
         modifier = Modifier
@@ -33,8 +33,10 @@ fun BookItem(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            Button(onClick = { onLikeClick(book) }) {
-                Text("Me gusta")
+            if (onLikeClick != null) {
+                Button(onClick = { onLikeClick(book) }) {
+                    Text("Me gusta")
+                }
             }
         }
     }

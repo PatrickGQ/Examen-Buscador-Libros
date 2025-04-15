@@ -38,7 +38,7 @@ fun SavedBooksScreen(
 
         LazyColumn {
             items(savedBooks) { book ->
-                BookItem(book = book, onLikeClick = {}) // sin botón funcional por ahora
+                BookItem(book = book)
             }
         }
     }
