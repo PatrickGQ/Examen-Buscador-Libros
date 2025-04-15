@@ -13,6 +13,9 @@ room = "2.6.1"
 ksp = "1.9.22-1.0.18"
 retrofit = "2.9.0"
 
+nav = "2.7.5"
+nav-compose = "2.7.5"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -33,6 +36,10 @@ room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+
+nav-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "nav" }
+nav-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "nav" }
+navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "nav-compose" }
 
 [bundles]
 room = [ "room-runtime", "room-ktx" ]

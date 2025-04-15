@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.example.examen.ui.search.components.BookItem
 
 @Composable
-fun SearchScreen(viewModel: SearchViewModel) {
+fun SearchScreen(viewModel: SearchViewModel, onNavigateToSaved: () -> Unit) {
     val searchQuery by viewModel.searchQuery
     val books by viewModel.books
 
@@ -31,6 +31,12 @@ fun SearchScreen(viewModel: SearchViewModel) {
 
         Spacer(modifier = Modifier.height(8.dp))
 
+        Button(
+            onClick = onNavigateToSaved,
+            modifier = Modifier.align(Alignment.End)
+        ) {
+            Text("Ver guardados")
+        }
         Button(
             onClick = { viewModel.searchBooks() },
             modifier = Modifier.align(Alignment.End)

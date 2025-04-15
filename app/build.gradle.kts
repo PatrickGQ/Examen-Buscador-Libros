@@ -51,6 +51,10 @@ dependencies {
 
     implementation(libs.bundles.retrofit)
 
+    implementation(libs.nav.fragment)
+    implementation(libs.nav.ui)
+    implementation(libs.navigation.compose)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

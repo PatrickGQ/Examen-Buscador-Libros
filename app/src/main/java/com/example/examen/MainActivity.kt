@@ -7,6 +7,7 @@ import androidx.room.Room
 import com.example.examen.data.local.db.AppDatabase
 import com.example.examen.data.remote.api.RetrofitInstance
 import com.example.examen.data.repository.BookRepositoryImpl
+import com.example.examen.ui.saved.SavedBooksScreen
 import com.example.examen.ui.search.SearchScreen
 import com.example.examen.ui.search.SearchViewModel
 import com.example.examen.usecases.SearchBooksUseCase
@@ -25,10 +26,15 @@ class MainActivity : ComponentActivity() {
             bookDao = database.bookDao()
         )
         val searchBooksUseCase = SearchBooksUseCase(repository)
-        val viewModel = SearchViewModel(searchBooksUseCase)
+        val viewModel = SearchViewModel(searchBooksUseCase, repository)
 
         setContent {
-            SearchScreen(viewModel = viewModel)
+            val navController = androidx.navigation.compose.rememberNavController()
+            com.example.examen.ui.navigation.AppNavGraph(
+                navController = navController,
+                viewModel = viewModel,
+                getSavedBooks = { repository.getSavedBooks() }
+            )
         }
     }
 }
