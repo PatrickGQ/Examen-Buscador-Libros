@@ -3,12 +3,15 @@ package com.example.examen.ui.search
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.examen.data.repository.BookRepositoryImpl
 import com.example.examen.domain.model.Book
 import com.example.examen.usecases.SearchBooksUseCase
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.Dispatchers
 
 class SearchViewModel(
-    private val searchBooksUseCase: SearchBooksUseCase
+    private val searchBooksUseCase: SearchBooksUseCase,
+    private val repository: BookRepositoryImpl
 ) : ViewModel() {
 
     val searchQuery = mutableStateOf("")
@@ -24,8 +27,13 @@ class SearchViewModel(
                 val result = searchBooksUseCase(searchQuery.value)
                 books.value = result
             } catch (e: Exception) {
-                // Log de error, si querés
             }
+        }
+    }
+
+    fun saveBook(book: Book) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.saveBook(book)
         }
     }
 }

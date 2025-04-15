@@ -42,7 +42,7 @@ fun SearchScreen(viewModel: SearchViewModel) {
 
         LazyColumn {
             items(books) { book ->
-                BookItem(book)
+                BookItem(book = book, onLikeClick = { viewModel.saveBook(it) })
             }
         }
     }
