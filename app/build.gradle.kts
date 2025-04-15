@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.nav.fragment)
     implementation(libs.nav.ui)
     implementation(libs.navigation.compose)
+    implementation(libs.bundles.navigation)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

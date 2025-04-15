@@ -22,13 +22,18 @@ fun AppNavGraph(
         startDestination = "search",
         modifier = modifier
     ) {
-        composable("search") {
+        composable(Routes.Search.route) {
             SearchScreen(viewModel = viewModel, onNavigateToSaved = {
                 navController.navigate("saved")
             })
         }
-        composable("saved") {
-            SavedBooksScreen(getSavedBooks = getSavedBooks)
+        composable(Routes.Saved.route) {
+            SavedBooksScreen(
+                getSavedBooks = getSavedBooks,
+                onBack = {
+                    navController.popBackStack()
+                }
+            )
         }
     }
 }

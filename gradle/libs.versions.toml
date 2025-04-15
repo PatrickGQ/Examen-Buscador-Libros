@@ -40,10 +40,12 @@ converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref
 nav-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "nav" }
 nav-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "nav" }
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "nav-compose" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "nav" }
 
 [bundles]
 room = [ "room-runtime", "room-ktx" ]
 retrofit = [ "retrofit", "converter-gson" ]
+navigation = ["androidx-navigation-compose"]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
