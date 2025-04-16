@@ -11,7 +11,9 @@ import com.example.examen.ui.saved.SavedBooksScreen
 import com.example.examen.ui.search.SearchScreen
 import com.example.examen.ui.search.SearchViewModel
 import com.example.examen.usecases.SearchBooksUseCase
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,14 +27,11 @@ class MainActivity : ComponentActivity() {
             RetrofitInstance.api,
             bookDao = database.bookDao()
         )
-        val searchBooksUseCase = SearchBooksUseCase(repository)
-        val viewModel = SearchViewModel(searchBooksUseCase, repository)
 
         setContent {
             val navController = androidx.navigation.compose.rememberNavController()
             com.example.examen.ui.navigation.AppNavGraph(
                 navController = navController,
-                viewModel = viewModel,
                 getSavedBooks = { repository.getSavedBooks() }
             )
         }

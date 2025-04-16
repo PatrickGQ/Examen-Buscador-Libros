@@ -14,7 +14,6 @@ import com.example.examen.ui.search.SearchViewModel
 fun AppNavGraph(
     navController: NavHostController,
     modifier: Modifier = Modifier,
-    viewModel: SearchViewModel,
     getSavedBooks: suspend () -> List<Book>
 ) {
     NavHost(
@@ -23,7 +22,7 @@ fun AppNavGraph(
         modifier = modifier
     ) {
         composable(Routes.Search.route) {
-            SearchScreen(viewModel = viewModel, onNavigateToSaved = {
+            SearchScreen(onNavigateToSaved = {
                 navController.navigate("saved")
             })
         }

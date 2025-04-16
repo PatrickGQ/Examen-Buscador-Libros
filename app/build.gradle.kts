@@ -2,30 +2,26 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
+    id("kotlin-kapt") // Añade esto
 }
 
 android {
     namespace = "com.example.examen"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.examen"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
+    buildFeatures {
+        compose = true
     }
 
     composeOptions {
@@ -33,42 +29,41 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17 // Actualiza a Java 17
+        targetCompatibility = JavaVersion.VERSION_17 // Actualiza a Java 17
     }
+
     kotlinOptions {
-        jvmTarget = "11"
-    }
-    buildFeatures {
-        compose = true
+        jvmTarget = "17" // Actualiza a Java 17
     }
 }
 
 dependencies {
-    // Room
+    // Añade esto
+    implementation("com.google.dagger:hilt-android:${libs.versions.hilt.get()}")
+    kapt("com.google.dagger:hilt-compiler:${libs.versions.hilt.get()}")
+
+    // El resto de tus dependencias
+    implementation(libs.core.ktx)
+    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.activity.compose)
+
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.bundles.compose)
+
     implementation(libs.bundles.room)
     ksp(libs.room.compiler)
 
     implementation(libs.bundles.retrofit)
 
-    implementation(libs.nav.fragment)
-    implementation(libs.nav.ui)
-    implementation(libs.navigation.compose)
-    implementation(libs.bundles.navigation)
+    // Comenta o elimina estas líneas
+    // implementation(libs.hilt.android)
+    // ksp(libs.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
+    implementation(libs.navigation.compose)
+
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
+    androidTestImplementation(libs.junit.ext)
+    androidTestImplementation(libs.espresso.core)
 }

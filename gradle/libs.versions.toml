@@ -1,54 +1,55 @@
 [versions]
-agp = "8.9.1"
+agp = "8.2.2"
 kotlin = "1.9.22"
-coreKtx = "1.16.0"
-junit = "4.13.2"
-junitVersion = "1.2.1"
-espressoCore = "3.6.1"
-lifecycleRuntimeKtx = "2.6.1"
-activityCompose = "1.10.1"
-composeBom = "2024.09.00"
-compose.compiler = "1.5.8"
+composeBom = "2024.04.01"
+composeCompiler = "1.5.8"
 room = "2.6.1"
-ksp = "1.9.22-1.0.18"
+hilt = "2.48.1" # Vuelve a 2.48.1 en lugar de 2.50
+ksp = "1.9.22-1.0.17"
+nav = "2.7.7"
 retrofit = "2.9.0"
-
-nav = "2.7.5"
-nav-compose = "2.7.5"
+coreKtx = "1.12.0"
+activityCompose = "1.8.2"
+lifecycleRuntimeKtx = "2.6.2"
+junit = "4.13.2"
+junitExt = "1.1.5"
+espressoCore = "3.5.1"
 
 [libraries]
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
-androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
-androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 
-nav-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "nav" }
-nav-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "nav" }
-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "nav-compose" }
-androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "nav" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version = "1.1.0" }
+
+navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "nav" }
+
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+junit-ext = { group = "androidx.test.ext", name = "junit", version.ref = "junitExt" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 
 [bundles]
+compose = [ "androidx-ui", "androidx-ui-graphics", "androidx-ui-tooling-preview", "androidx-material3" ]
 room = [ "room-runtime", "room-ktx" ]
 retrofit = [ "retrofit", "converter-gson" ]
-navigation = ["androidx-navigation-compose"]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }

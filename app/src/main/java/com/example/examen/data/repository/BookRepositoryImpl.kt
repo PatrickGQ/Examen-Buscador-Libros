@@ -7,8 +7,9 @@ import com.example.examen.data.remote.api.BookApiService
 import com.example.examen.data.remote.mapper.toDomain
 import com.example.examen.domain.model.Book
 import com.example.examen.domain.repository.BookRepository
+import javax.inject.Inject
 
-class BookRepositoryImpl(
+class BookRepositoryImpl @Inject constructor(
     private val api: BookApiService,
     private val bookDao: BookDao
 ) : BookRepository {

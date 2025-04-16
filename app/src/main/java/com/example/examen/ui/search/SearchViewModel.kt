@@ -8,8 +8,11 @@ import com.example.examen.domain.model.Book
 import com.example.examen.usecases.SearchBooksUseCase
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.Dispatchers
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class SearchViewModel(
+@HiltViewModel
+class SearchViewModel @Inject constructor(
     private val searchBooksUseCase: SearchBooksUseCase,
     private val repository: BookRepositoryImpl
 ) : ViewModel() {

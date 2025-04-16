@@ -11,10 +11,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.examen.ui.search.components.BookItem
 
 @Composable
-fun SearchScreen(viewModel: SearchViewModel, onNavigateToSaved: () -> Unit) {
+fun SearchScreen(
+    viewModel: SearchViewModel = hiltViewModel(),
+    onNavigateToSaved: () -> Unit
+) {
     val searchQuery by viewModel.searchQuery
     val books by viewModel.books
 
